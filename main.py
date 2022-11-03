@@ -5,34 +5,63 @@ def readbook():
   f.close()
   return ''.join(c for c in s if c.isalnum() or c == " ")
 
+#### Should I use functions or just create loops ?????
 # Create variable to hold Dracula text
 draculaText = readbook()
 
 # Create an empty dictionary
 draculaWords = {}
 
+# Create count for most word
+often = 0
 # Create a for loop for most often
-for word in draculaText.split():
+for word in readbook():
+
+  # make all words lowercase 
   if(word.lower() in draculaText):
-    mostOften = word.count(draculaText)
 
+    # finish the count
+    often += 1
 
+# Create function for word that appears most often 
+def mostOften(word, often):
 
-appearances = 0
+  # Create for loop to find word in dracula text
+  for word in readbook():
+
+    # make all words lowercase
+    word = word.lower()
+
 # Create for loop to count four letter words 
-for fourLetter in draculaText.split(' '):
-  # if statement to count length
-  if len(fourLetter) == 4:
-    # finish the count starte earlier
-    appearances += 1 
+def fourLetterWord():
+  appearances = 0
+  for fourLetter in readbook():
+    # make all words lowercase
+    fourLetter = fourLetter.lower()
+  
+    # if statement to count length
+    if len(fourLetter) == 4:
+    
+      # finish the count starte earlier
+      appearances += 1 
+  
+  # Create a print to print out how many four letter words there are
+  print(f"There are {appearances} words that are four letters long")
 
-
+# Start the count =
 count = 0
+
 # Create a for loop to count the words that show up at least 500 times 
-for number in range(0):
-  if(number in draculaText >= 500):
+for words in readbook():
+
+  # if word appears more than 500 times
+  if(count >= 500):
+
+    # count the number of times
     count += 1
-    draculaWord[number] = count 
+
+    # count in the dictionary created at the beginning
+    draculaWords[words] = count 
 
 # Create the print functions
 print("=== Results ===")
@@ -41,18 +70,22 @@ print("=== Results ===")
 print()
 
 # Call the word that appears the most often 
-print(f"{word} is the word that appears the most through the text, a total of {mostOften} times ")
+mostOften(often, word)
+print(f"{word} is the word that appears the most through the text, a total of {often} times ")
 
 # Space
 print()
 
 # Call the amount of 4 letter words in dracula
-print(f"There are {appearances} words that are four letters long ")
+fourLetterWord()
+#print(f"There are {fourLetterWord} words that are four letters long ")
 
 # Space
 print()
 
 # Call the dictionary for words in dracula 500 times
 for key, value in draculaWords.items():
+
+  # print the key value of dictionary, #### Not Working #### Do not know why
   print(f"{key} - {value}")
 
