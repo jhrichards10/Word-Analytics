@@ -5,7 +5,6 @@ def readbook():
   f.close()
   return ''.join(c for c in s if c.isalnum() or c == " ")
 
-#### Should I use functions or just create loops ?????
 # Create variable to hold Dracula text
 draculaText = readbook()
 # Split 
@@ -16,73 +15,46 @@ draculaWords = {}
 
 # Create a for loop for most often
 for word in draculaText:
+
+  # create if statement to give 'word' meaning
   if(word in draculaWords):
+
+    # add a word to count if in dictionary
     draculaWords[word] += 1
+  
+  # else the value is one  
   else:
     draculaWords[word] = 1
 
+# open a count for the word that appears the most 
 highRank = 0
+
+# open a string to store the words being counted
 word = ""
+
+# open a count for each word that is at least four letters long
 fourCount = 0
+
+# create a for loop for the dictionary
 for key, value in draculaWords.items():
+  
+  # create if statement to count the word that appears the most
   if value > highRank:
+    
+    # make highrank count eqaul the value in the dictionary
     highRank = value
+    
+    # make the word equal the key in the dictionary
     word = key
+  
+  # Create if statement with length to count four letter words  
   if len(key) == 4:
+
+    # add 1 each time it finds a four letter word
     fourCount += 1 
 
-  # make all words lowercase 
- # if(word.lower() in draculaText):
-
-
-# Create function for word that appears most often 
-#def mostOften(word, often):
-
-  # Create for loop to find word in dracula text
- # for word in readbook():
-
-    # make all words lowercase
-  #  word = word.lower()
-
-# Create for loop to count four letter words 
-# def fourLetterWord():
-#   appearances = 0
-#   for fourLetter in readbook():
-#     # make all words lowercase
-#     fourLetter = fourLetter.lower()
   
-#     # if statement to count length
-#     if len(fourLetter) == 4:
-    
-#       # finish the count starte earlier
-#       appearances += 1 
-  
-#   # Create a print to print out how many four letter words there are
-#   print(f"There are {appearances} words that are four letters long")
-
-# # Start the count =
-# count = 0
-
-# # Create a for loop to count the words that show up at least 500 times 
-# for words in readbook():
-
-#   # if word appears more than 500 times
-#   if(count >= 500):
-
-#     # count the number of times
-#     count += 1
-
-#     # count in the dictionary created at the beginning
-#     draculaWords[words] = count 
-
-# # Create the print functions
-# print("=== Results ===")
-
-# #Space
-# print()
-
 # # Call the word that appears the most often 
-# mostOften(often, word)
 print(f"'{word}' is the word that appears the most through the text, a total of {highRank} times ")
 
 # Space
@@ -96,7 +68,12 @@ print()
 
 # Set up the 500 or more words
 print("I noticed that these words show up 500 or more times:")
-# # Call the dictionary for words in dracula 500 times
+
+# Call the dictionary for words in dracula 500 or more times
 for key, value in draculaWords.items():
+
+  # create a greater than or equal to 500 count
   if value >= 500:
+
+    # print the count
     print(f"{key} - {value}")
